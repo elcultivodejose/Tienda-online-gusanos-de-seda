@@ -8,14 +8,19 @@ const productos = [
     { id: 2, nombre: 'Derrobis', precio: 4, imagen: 'Images/huevos2.png' },
     { id: 3, nombre: 'Huevos RN12+Derrobis', precio: 4, imagen: 'Images/huevos3.png' },
     { id: 4, nombre: 'Huevos Samia ricini', precio: 4, imagen: 'Images/huevos4.png' },
-    { id: 5, nombre: 'RN12 Gusano', precio: 4, imagen: 'Images/gusano2.png' }
+    { id: 5, nombre: 'RN12 Gusano', precio: 4, imagen: 'Images/gusano2.png' },
+    { id: 6, nombre: 'Derrobis Gusano', precio: 4, imagen: 'Images/gusano1.png' },
+    { id: 7, nombre: 'RN12+Derrobis Gusano', precio: 4, imagen: 'Images/gusano3.jpg' },
+    { id: 8, nombre: 'Samia cynthia', precio: 4, imagen: 'Images/gusano-samia.png' },
+    { id: 9, nombre: 'Capullo de seda vacíos', precio: 6, imagen: 'Images/capullos.jpg' },
 ];
 
 // Función para agregar al carrito
 function agregarAlCarrito(id) {
     const producto = productos.find(p => p.id === id);
     if (producto) {
-        carrito.push(producto);
+        console.log('Agregado al carrito', producto);  // 👈 Útil para depurar
+        carrito.push(producto)
         renderizarCarrito();
     }
 }
