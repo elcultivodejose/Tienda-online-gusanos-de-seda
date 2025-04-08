@@ -1,7 +1,9 @@
 const carrito = [];
+const COSTO_ENVIO = 1.5; // 💸 Puedes cambiar el valor si quieres
 const listaCarrito = document.querySelector('#lista-carrito tbody');
 const botonVaciarCarrito = document.querySelector('#vaciar-carrito');
 const botonFinalizarCompra = document.querySelector('#boton-compra');  // Definir el botón de finalizar compra
+
 
 const productos = [
     { id: 1, nombre: 'RN12', precio: 4, imagen: 'Images/huevos1.png' },
@@ -75,17 +77,34 @@ botonVaciarCarrito.addEventListener('click', () => {
 
 // Función para mostrar el total del carrito
 function mostrarTotal() {
-    const total = carrito.reduce((acc, producto) => acc + producto.precio, 0);
-    const totalElement = document.querySelector('#total');
-    if (!totalElement) {
+    const subtotal = carrito.reduce((acc, producto) => acc + producto.precio, 0);
+    const totalConEnvio = carrito.length > 0 ? subtotal + COSTO_ENVIO : 0;
+
+    // Eliminar filas previas si existen
+    const filaEnvio = document.querySelector('#fila-envio');
+    if (filaEnvio) filaEnvio.remove();
+
+    const filaTotal = document.querySelector('#fila-total');
+    if (filaTotal) filaTotal.remove();
+
+    // Mostrar fila de envío
+    if (carrito.length > 0) {
+        const envioRow = document.createElement('tr');
+        envioRow.id = 'fila-envio';
+        envioRow.innerHTML = `
+            <td colspan="3">Gastos de envío:</td>
+            <td>€${COSTO_ENVIO.toFixed(2)}</td>
+        `;
+        listaCarrito.appendChild(envioRow);
+
+        // Fila total
         const totalRow = document.createElement('tr');
+        totalRow.id = 'fila-total';
         totalRow.innerHTML = `
-            <td colspan="3">Total</td>
-            <td id="total">€${total}</td>
+            <td colspan="3"><strong>Total:</strong></td>
+            <td id="total">€${totalConEnvio.toFixed(2)}</td>
         `;
         listaCarrito.appendChild(totalRow);
-    } else {
-        totalElement.innerText = `€${total}`;
     }
 }
 
@@ -105,8 +124,9 @@ botonFinalizarCompra.addEventListener('click', () => {
     // Mostrar el botón de PayPal
     document.getElementById('paypal-button-container').style.display = 'block';
 
-    const total = carrito.reduce((acc, producto) => acc + producto.precio, 0);
-
+    const subtotal = carrito.reduce((acc, producto) => acc + producto.precio, 0);
+    const total = carrito.length > 0 ? subtotal + COSTO_ENVIO : 0;
+    
     paypal.Buttons({
         createOrder: function(data, actions) {
             return actions.order.create({
