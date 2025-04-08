@@ -45,11 +45,16 @@ img {
 }
 
 .logo {
-    font-size: 25px;
-    color: forestgreen;
-    text-transform: uppercase;
-    font-weight: 800;
+    display: flex;
+    align-items: center;
+    padding: 10px;
 }
+
+.logo-img {
+    width: 100px;      /* Puedes ajustar el tamaño a tu gusto */
+    height: auto;
+}
+
 
 .menu .navbar ul li {
     position: relative;
