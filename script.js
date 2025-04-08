@@ -1,6 +1,8 @@
 const carrito = [];
 const listaCarrito = document.querySelector('#lista-carrito tbody');
 const botonVaciarCarrito = document.querySelector('#vaciar-carrito');
+const botonFinalizarCompra = document.querySelector('#boton-compra');  // Definir el botón de finalizar compra
+
 const productos = [
     { id: 1, nombre: 'RN12', precio: 4, imagen: 'Images/huevos1.png' },
     { id: 2, nombre: 'Derrobis', precio: 4, imagen: 'Images/huevos2.png' },
@@ -20,8 +22,8 @@ function agregarAlCarrito(id) {
 
 // Función para renderizar el carrito en la tabla
 function renderizarCarrito() {
-    listaCarrito.innerHTML = ''; // Limpiar la lista de productos en el carrito
-
+    listaCarrito.innerHTML = '';  // Limpiar la lista de productos en el carrito
+    
     carrito.forEach(producto => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -42,15 +44,14 @@ function renderizarCarrito() {
 
     // Mostrar el total del carrito
     mostrarTotal();
-}
 
-//Mostrar u ocultar el botón finalizar compra
-if (carrito.length > 0) {
-    botonFinalizarCompra.style.display = 'block';
-} else {
-    botonFinalizarCompra.style.display = 'none';
+    // Mostrar u ocultar el botón de finalizar compra
+    if (carrito.length > 0) {
+        botonFinalizarCompra.style.display = 'block';  // Mostrar el botón
+    } else {
+        botonFinalizarCompra.style.display = 'none';  // Ocultar el botón
+    }
 }
-
 
 // Función para eliminar un producto del carrito
 function eliminarProducto(id) {
@@ -92,9 +93,8 @@ botonesAgregar.forEach(boton => {
     });
 });
 
-
-//Función para manejar el click en el botón de "Finalizar compra"
-botonFinalizarCompra.addEventListener('click', () =>{
-    //Redirigir a la página de finalizar compra (puedes cambiar la URL a la página real de pago)
-    window.location.href = "/finalizar-compra.html"
+// Función para manejar el clic en el botón de "Finalizar compra"
+botonFinalizarCompra.addEventListener('click', () => {
+    // Redirigir a la página de finalizar compra (puedes cambiar la URL a la página real de pago)
+    window.location.href = "/finalizar-compra.html";  // Ajusta este enlace a la URL de tu página de pago
 });
