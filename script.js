@@ -44,6 +44,13 @@ function renderizarCarrito() {
     mostrarTotal();
 }
 
+//Mostrar u ocultar el botón finalizar compra
+if (carrito.length > 0) {
+    botonFinalizarCompra.style.display = 'unblock';
+} else {
+    botonFinalizarCompra.style.display = 'none';
+}
+
 // Función para eliminar un producto del carrito
 function eliminarProducto(id) {
     const index = carrito.findIndex(producto => producto.id === id);
@@ -82,4 +89,10 @@ botonesAgregar.forEach(boton => {
         const idProducto = parseInt(e.target.getAttribute('data-id'));
         agregarAlCarrito(idProducto);
     });
+});
+
+//Función para manejar el click en el botón de "Finalizar compra"
+botonFinalizarCompra.addEventListener('click', () =>{
+    //Redirigir a la página de finalizar compra (puedes cambiar la URL a la página real de pago)
+    window.location.href = "/finalizar-compra.html"
 });
