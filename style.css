@@ -498,4 +498,8 @@ h3 {
     background-color: #218838; /* Color más oscuro al pasar el ratón */
 }
 
+.navbar {
+    transition: all 0.3s ease;
+}
+
 }
