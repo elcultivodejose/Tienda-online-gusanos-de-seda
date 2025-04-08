@@ -462,4 +462,40 @@ h3 {
         flex-direction: column;
         text-align: center;
     }
+
+    /* Estilos generales */
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre los productos */
+    justify-content: center;
+}
+
+.producto {
+    width: 200px; /* Ajusta el tamaño de los productos según sea necesario */
+    text-align: center;
+}
+
+.finalizar-compra-container {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centra el botón */
+    margin-top: 20px; /* Espacio encima del botón */
+}
+
+.finalizar-compra {
+    background-color: #28a745; /* Color verde del botón */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: none; /* Ocultamos el botón por defecto */
+}
+
+.finalizar-compra:hover {
+    background-color: #218838; /* Color más oscuro al pasar el ratón */
+}
+
 }
