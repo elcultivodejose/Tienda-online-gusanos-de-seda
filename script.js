@@ -93,8 +93,33 @@ botonesAgregar.forEach(boton => {
     });
 });
 
-// Función para manejar el clic en el botón de "Finalizar compra"
 botonFinalizarCompra.addEventListener('click', () => {
-    // Redirigir a la página de finalizar compra (puedes cambiar la URL a la página real de pago)
-    window.location.href = "/finalizar-compra.html";  // Ajusta este enlace a la URL de tu página de pago
+    // Ocultar el botón de finalizar compra
+    botonFinalizarCompra.style.display = 'none';
+
+    // Mostrar el botón de PayPal
+    document.getElementById('paypal-button-container').style.display = 'block';
+
+    const total = carrito.reduce((acc, producto) => acc + producto.precio, 0);
+
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: total.toFixed(2) // Total con dos decimales
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Gracias por tu compra, ' + details.payer.name.given_name + '!');
+                // Aquí puedes vaciar el carrito, redirigir, etc.
+                carrito.length = 0;
+                renderizarCarrito();
+                document.getElementById('paypal-button-container').style.display = 'none';
+            });
+        }
+    }).render('#paypal-button-container');
 });
