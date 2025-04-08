@@ -55,7 +55,6 @@ img {
     height: auto;
 }
 
-
 .menu .navbar ul li {
     position: relative;
     float: left;
@@ -292,7 +291,7 @@ h3 {
         rgba(0,0,0,0.2),
         rgba(0,0,0,0.2)
     ),
-    url(images/polilla1.png);
+    url(images/);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
