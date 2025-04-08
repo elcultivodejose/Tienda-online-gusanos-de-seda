@@ -1,32 +1,325 @@
-// Función para renderizar el carrito en la tabla
-function renderizarCarrito() {
-    listaCarrito.innerHTML = '';  // Limpiar la lista de productos en el carrito
-    
-    carrito.forEach(producto => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td><img src="${producto.imagen}" alt="${producto.nombre}" style="width: 50px;"></td>
-            <td>${producto.nombre}</td>
-            <td>€${producto.precio}</td>
-            <td><button class="btn-2" onclick="eliminarProducto(${producto.id})">Eliminar</button></td>
-        `;
-        listaCarrito.appendChild(row);
-    });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tus Gusanos de seda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    // Si el carrito está vacío, agregar un mensaje
-    if (carrito.length === 0) {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="4">Tu carrito está vacío</td>`;
-        listaCarrito.appendChild(row);
-    }
+    <header class="header">
 
-    // Mostrar el total del carrito
-    mostrarTotal();
+        <div class="menu container">       
+            <a href="#" class="logo">logo</a>
+            <img src="" alt="">
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="images/menu.png">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Cuidados</a></li>
+                    <li><a href="#">Historia</a></li>
+                </ul>
+            </nav>
+            <div>
+                <ul>
+                    <li class="submenu">
+                        <img src="Images/car.svg" id="img-carrito" alt="">
+                        <div id="carrito">
+                            <table id="lista-carrito">
+                                <thead>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <button id="vaciar-carrito" class="btn-2">Vaciar Carrito</button>
+                        </div>
+                        <div id="total-container">
+                            <span>Total: </span><span id="total">€0</span>
+                            <button id="boton-compra" class="btn-2" style="display: none;">Finalizar Compra</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-    // Mostrar u ocultar el botón de finalizar compra
-    if (carrito.length > 0) {
-        botonFinalizarCompra.style.display = 'block';  // Mostrar el botón
-    } else {
-        botonFinalizarCompra.style.display = 'none';  // Ocultar el botón
-    }
-}
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>Ofertas Especiales</h1>
+                <p>
+                    ¡Compra huevos y gusanos a buen calidad!
+                </p>
+                <a href="#" class="btn-1">Información</a>
+            </div>
+            <div class="header-img">
+                <img src="images/gusano2.png" alt="">
+            </div>
+        </div>
+
+    </header>
+
+
+    <section class="oferts container" id="lista-1">
+        <h2>Huevos</h2>
+        <p>
+            Compra huevos a buen precio y buena calidad.
+        </p>
+
+        <div class="oferts-content">
+
+            <div class="oferts-1">
+                <img src="Images/huevos1.png" alt="">
+                <div class="product-txt">
+                    <h3>RN12</h3>
+                    <p>ㅤ
+                        ㅤ
+                    </p>
+                    <p class="precio">€4</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="1">Agregar al carrito</a>
+                </div>
+
+            </div>
+
+            <div class="oferts-1">
+                <img src="Images/huevos2.png" alt="prod">
+                <div class="product-txt">
+                    <h3>Derrobis<h3>
+                    <p>ㅤ
+                        ㅤ
+                    </p>
+                    <p class="precio">€4</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="2">Agregar al carrito</a>
+                </div>
+
+            </div>
+
+            <div class="oferts-1">
+                <img src="Images/huevos3.png" alt="">
+                <div class="product-txt">
+                    <h3>Huevos RN12+Derrobis</h3>
+                    <p>ㅤ
+                    </p>
+                    <p class="precio">€4</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="3">Agregar al carrito</a>
+                </div>
+            </div>
+            
+
+                <div class="oferts-1">
+                    <img src="Images/huevos4.png" alt="">
+                    <div class="product-txt">
+                        <h3>Huevos Samia ricini</h3>
+                        <p>ㅤ
+                        </p>
+                        <p class="precio">€4</p>
+                        <a href="#" class="agregar-carrito btn-3" data-id="4">Agregar al carrito</a>
+                    </div>
+                </div>
+           
+            </div>
+        </div>
+
+    </section>
+
+    <section class="promotion">
+
+        <div class="promotion-content container">
+
+            <div class="promotion-txt">
+                <h2>Cuidados</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                </p>    
+                <a href="#" class="btn-1">Información</a>
+            </div>
+
+            <div class="promotion-img">
+                <img src="images/gusano3.jpg" alt="">
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <main class="product container" id="lista-2">
+        <h2>Productos</h2>
+        <p>
+            Venta de gusanos vivos para alimentar reptiles insectívoros.           
+        </p>
+        <div class="product-content">
+
+            <div class="ofert-1">
+                <img src="Images/gusano2.png" alt="">
+                <div class="product-txt">
+                    <h3>RN12</h3>
+                    <p>Gusanos de raza robis naranja de la familia Bombyx mori. 
+                        Ideal para que los más pequeños puedan ver el crecimiento 
+                        de los gusanos y aprender su ciclo de vida.
+                        Hay que echarles de comer hojas de morera fresca.
+                        Si queremos que eclosionen del huevo antes, hay que someterlo
+                        a un invierno artificial, en la nevera, en la zona de la fruta o 
+                        donde no haga mucho frío, temperatura ideal en la nevera (6ºC - 8ºC) durante 2 semanas.
+                        Luego cuando lo dejemos afuera la temperatura ideal sería sobre los 20ºC - 25ºC.
+                        Cualquier duda, hágamelo saber.
+                    </p>
+                    </p>
+                    <p class="precio">€4</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="5">Agregar al carrito</a>
+                </div>
+            </div>
+
+            <div class="ofert-1">
+                <img src="Images/gusano1.png" alt="">
+                <div class="product-txt">
+                    <h3>Derrobis</h3>
+                    <p>Gusanos de raza robis naranja de la familia Bombyx mori. 
+                        Ideal para que los más pequeños puedan ver el crecimiento 
+                        de los gusanos y aprender su ciclo de vida.
+                        Hay que echarles de comer hojas de morera fresca.
+                        Si queremos que eclosionen del huevo antes, hay que someterlo
+                        a un invierno artificial, en la nevera, en la zona de la fruta o 
+                        donde no haga mucho frío, temperatura ideal en la nevera (6ºC - 8ºC) durante 2 semanas.
+                        Luego cuando lo dejemos afuera la temperatura ideal sería sobre los 20ºC - 25ºC.
+                        Cualquier duda, hágamelo saber.
+                    </p>
+                    </p>
+                    <p class="precio">€4</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="5">Agregar al carrito</a>
+                </div>
+            </div>
+
+            <div class="ofert-1">
+                <img src="Images/gusano3.jpg" alt="">
+                <div class="product-txt">
+                    <h3>RN12+Derrobis</h3>
+                    <p>Gusanos de raza robis naranja de la familia Bombyx mori. 
+                        Ideal para que los más pequeños puedan ver el crecimiento 
+                        de los gusanos y aprender su ciclo de vida.
+                        Hay que echarles de comer hojas de morera fresca. 
+                        Si queremos que eclosionen del huevo antes, hay que someterlo
+                        a un invierno artificial, en la nevera, en la zona de la fruta o 
+                        donde no haga mucho frío, temperatura ideal en la nevera (6ºC - 8ºC) durante 2 semanas.
+                        Luego cuando lo dejemos afuera la temperatura ideal sería sobre los 20ºC - 25ºC.
+                        Cualquier duda, hágamelo saber.
+                    </p>
+                    <p class="precio">€4</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="5">Agregar al carrito</a>
+                </div>
+            </div>
+
+            <div class="ofert-1">
+                <img src="Images/gusano-samia.png" alt="">
+                <div class="product-txt">
+                    <h3>Samia cynthia</h3>
+                    <p>Gusanos del ricino o de las Indias llamado vulgarmente, es un tipo de lepidóptero
+                        como los Bombyx mori, pero no comen hojas de moreras.
+                        Hay que echarles de comer hojas de alianto (Ailanthus altissima), 
+                        aligustre (Ligustrum vulgare) y ricino (Ricinus communis).
+                    </p>
+                    <p class="precio">€4</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="5">Agregar al carrito</a>
+                </div>
+            </div>
+
+            
+            <div class="ofert-1">
+                <img src="Images/capullos.jpg" alt="">
+                <div class="product-txt">
+                    <h3>Capullo de seda vacíos</h3>
+                    <p>El gusano transformado en polilla ha salido del capullos.
+                    </p>
+                    <p>
+                        Se utiliza para diversos usos.
+                    </p>
+                    <p class="precio">€4 - €10</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="5">Agregar al carrito</a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <section class="blog container">
+        
+        <h2>Nuevas Noticias</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <div class="blog-content">
+
+            <div class="blog-1">
+                <img src="images/polilla.jpg" alt="">
+                <div class="blog-txt">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                    <a href="#" class="btn-4">leer más</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer container">
+
+        <div class="link">
+            <h3>lorem</h3>
+            <ul>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+            </ul>
+        </div>
+
+        <div class="link">
+            <h3>lorem</h3>
+            <ul>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+            </ul>
+        </div>
+
+        <div class="link">
+            <h3>lorem</h3>
+            <ul>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+            </ul>
+        </div>
+
+        <div class="link">
+            <h3>lorem</h3>
+            <ul>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+                <li><a href="#">lorem</a></li>
+            </ul>
+        </div>
+    </footer>
+
+
+
+      <script src="script.js"></script>
+</body>
+</html>
