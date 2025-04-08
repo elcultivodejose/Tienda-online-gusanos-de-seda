@@ -82,4 +82,71 @@ botonesAgregar.forEach(boton => {
         const idProducto = parseInt(e.target.getAttribute('data-id'));
         agregarAlCarrito(idProducto);
     });
+
+    // Asume que tienes un array de productos en el carrito (por ejemplo)
+let carrito = [];
+
+// Función para agregar productos al carrito (simplificada)
+function agregarAlCarrito(producto) {
+    carrito.push(producto);
+    actualizarCarrito();
+}
+
+// Función para actualizar la vista del carrito
+function actualizarCarrito() {
+    const listaCarrito = document.querySelector("#lista-carrito tbody");
+    listaCarrito.innerHTML = ''; // Limpiar la lista del carrito
+
+    carrito.forEach((producto) => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+            <td><img src="${producto.imagen}" alt="${producto.nombre}" width="50"></td>
+            <td>${producto.nombre}</td>
+            <td>€${producto.precio}</td>
+            <td><button class="eliminar" data-id="${producto.id}">Eliminar</button></td>
+        `;
+        listaCarrito.appendChild(fila);
+    });
+
+    // Actualizar el total
+    const total = carrito.reduce((acc, producto) => acc + producto.precio, 0);
+    document.getElementById("total").textContent = `€${total.toFixed(2)}`;
+
+    // Mostrar u ocultar el botón de finalizar compra
+    const botonCompra = document.getElementById("boton-compra");
+    if (carrito.length > 0) {
+        botonCompra.style.display = 'block'; // Mostrar botón
+    } else {
+        botonCompra.style.display = 'none'; // Ocultar botón
+    }
+}
+
+// Función para eliminar productos del carrito
+document.querySelector("#lista-carrito").addEventListener("click", (e) => {
+    if (e.target.classList.contains("eliminar")) {
+        const idProducto = e.target.getAttribute("data-id");
+        carrito = carrito.filter(producto => producto.id !== idProducto);
+        actualizarCarrito();
+    }
+});
+
+// Función para manejar el clic en el botón de finalizar compra
+document.getElementById("boton-compra").addEventListener("click", () => {
+    // Redirigir a la página de pago (puedes cambiar esto a la página real de checkout)
+    window.location.href = "/finalizar-compra.html"; // Aquí puedes poner el enlace a la página de pago
+});
+
+// Ejemplo de agregar productos al carrito
+document.querySelectorAll(".agregar-carrito").forEach((boton) => {
+    boton.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = boton.getAttribute("data-id");
+        const nombre = boton.parentElement.querySelector("h3").textContent;
+        const precio = parseFloat(boton.parentElement.querySelector(".precio").textContent.replace('€', ''));
+        const imagen = boton.parentElement.querySelector("img").getAttribute("src");
+
+        agregarAlCarrito({ id, nombre, precio, imagen });
+    });
+ });
+    
 });
