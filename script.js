@@ -46,7 +46,7 @@ function renderizarCarrito() {
 
 //Mostrar u ocultar el botón finalizar compra
 if (carrito.length > 0) {
-    botonFinalizarCompra.style.display = 'unblock';
+    botonFinalizarCompra.style.display = 'block';
 } else {
     botonFinalizarCompra.style.display = 'none';
 }
