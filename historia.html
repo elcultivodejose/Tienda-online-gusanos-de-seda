@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia - Tus Gusanos de Seda</title>
+    <link rel="icon" href="./Images/gusano3.jpg" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="menu container">
+            <a href="index.html" class="logo">
+                <img src="./Images/gusano3.jpg" alt="Logo" class="logo-img">
+            </a>
+
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="./Images/menu.png" alt="menu" style="width: 30px;">
+            </label>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="cuidados.html">Cuidados</a></li>
+                    <li><a href="historia.html" class="activo">Historia</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>La Historia del Gusano de Seda</h1>
+                <p>Descubre cómo este pequeño insecto cambió el curso de la historia.</p>
+            </div>
+            <div class="header-img">
+                <img src="./Images/gusano-historia.png" alt="Historia del gusano de seda">
+            </div>
+        </div>
+    </header>
+
+    <section class="timeline container">
+        <h2>Línea de tiempo</h2>
+        <ul>
+          <li><strong>3000 a.C.:</strong> Domesticación en China</li>
+          <li><strong>550 d.C.:</strong> Monjes llevan huevos a Bizancio</li>
+          <li><strong>Siglo XIII:</strong> Expansión por Europa</li>
+          <li><strong>Actualidad:</strong> Cría con fines educativos</li>
+        </ul>
+      </section>
+      
+
+    <!-- SECCIÓN DE HISTORIA -->
+    <main class="historia-timeline container">
+        <h2 class="fade-in">🕰️ Un viaje de miles de años</h2>
+        <section class="timeline-item fade-in">
+          <h3>China, hace 5,000 años</h3>
+          <p>El gusano de seda, conocido como <strong>Bombyx mori</strong>, fue domesticado en la antigua China y dio origen a la legendaria <em>Ruta de la Seda</em>.</p>
+          <img src="./Images/ruta-seda.png" alt="Ruta de la seda" class="img-ajustada">
+        </section>
+      
+        <blockquote class="dato-curioso fade-in">🐛 “Se necesitan alrededor de 2,500 gusanos para producir una sola camiseta de seda.”</blockquote>
+      
+        <section class="timeline-item fade-in">
+          <h3>Xi Ling Shi y el capullo en el té</h3>
+          <p>Cuenta la leyenda que una emperatriz descubrió la seda cuando un capullo cayó en su taza caliente. ¡Y así nació una industria!</p>
+        </section>
+      
+        <section class="timeline-item fade-in">
+          <h3>Expansión global</h3>
+          <p>El secreto de la seda se filtró desde China hacia India, Persia y luego Europa, influyendo en culturas como la española.</p>
+          <img src="./Images/ciclo-vida.png" alt="Ciclo del gusano de seda" class="img-ajustada">
+        </section>
+      
+        <section class="timeline-item fade-in">
+          <h3>Actualidad</h3>
+          <p>Hoy, los gusanos de seda se crían no solo para textiles, sino también con fines educativos, científicos y ecológicos.</p>
+        </section>
+      
+        <div class="frase-final fade-in">✨ La historia del gusano de seda es también la historia de la humanidad tejiendo conexiones. 🧵</div>
+      
+        <a href="#" class="btn-top">↑</a>
+      </main>
+      
+
+    <!-- FOOTER -->
+    <footer class="footer container">
+        <div class="link">
+            <h3>Enlaces</h3>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="cuidados.html">Cuidados</a></li>
+                <li><a href="historia.html">Historia</a></li>
+            </ul>
+        </div>
+        <div class="link">
+            <h3>Contacto</h3>
+            <ul>
+              
+              <li><a href="https://www.instagram.com/el_cultivo_de_jose?igsh=MXF5aHpzaGJtb2kzNA==" target="_blank">Instagram</a></li>
+              <li><a href="https://www.youtube.com/@elcultivodejose" target="_blank">YouTube</a></li>
+            </ul>
+          </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const faders = document.querySelectorAll('.fade-in');
+          
+          const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, {
+            threshold: 0.2
+          });
+      
+          faders.forEach(el => appearOnScroll.observe(el));
+        });
+      </script>
+
+</body>
+</html>
+
