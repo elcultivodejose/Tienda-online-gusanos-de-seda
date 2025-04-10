@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Tus Gusanos de Seda</title>
+    <link rel="icon" href="./Images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="menu container">
+            <a href="index.html" class="logo">
+                <img src="./Images/favicon.png" alt="Logo" class="logo-img">
+            </a>
+
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="./Images/menu.png" alt="menu" style="width: 30px;">
+            </label>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html" class="activo">Productos</a></li>
+                    <li><a href="cuidados.html">Cuidados</a></li>
+                    <li><a href="historia.html">Historia</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <ul>
+
+                <div class="carrito-flotante">
+                    <img src="./Images/car.svg" id="img-carrito" alt="Carrito">
+                    <div id="carrito">
+                        <table id="lista-carrito">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <button id="vaciar-carrito" class="btn-2">Vaciar Carrito</button>
+                        <div id="resumen-total" style="margin-top: 1em; font-size: 1.2em;"></div>
+                        <button id="boton-compra" class="btn-2" style="display: none;">Finalizar Compra</button>
+                        <div id="paypal-button-container" style="margin-top: 20px;"></div>
+                    </div>
+                </div>
+                
+
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>Nuestros Productos</h1>
+                <p>Huevos, gusanos y otros artículos de seda para tu experiencia educativa o alimentaria.</p>
+            </div>
+            <div class="header-img">
+                <img src="./Images/gusano2.png" alt="Gusanos">
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN PRINCIPAL DE PRODUCTOS -->
+    <main class="product container">
+
+        <h2>Huevos de Gusano de Seda</h2>
+        <div class="product-content">
+
+            <div class="ofert-1">
+                <img src="./Images/huevos1.png" alt="Huevos RN12">
+                <div class="product-txt">
+                    <h3>Huevos RN12</h3>
+                    <p>Huevos de raza RN12. Muy resistentes y con buen índice de eclosión.</p>
+                    <p class="precio">€3</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="1">Agregar al carrito</a>
+                </div>
+            </div>
+
+            <div class="ofert-1">
+                <img src="./Images/huevos2.png" alt="Huevos Derrobis">
+                <div class="product-txt">
+                    <h3>Huevos Derrobis</h3>
+                    <p>Huevos de gusanos Derrobis. Fáciles de cuidar y perfectos para niños.</p>
+                    <p class="precio">€3</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="2">Agregar al carrito</a>
+                </div>
+            </div>
+
+            <div class="ofert-1">
+                <img src="./Images/huevos3.png" alt="Mix">
+                <div class="product-txt">
+                    <h3>Huevos RN12 + Derrobis</h3>
+                    <p>Pack combinado para quienes quieren variedad en sus gusanos.</p>
+                    <p class="precio">€4</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="3">Agregar al carrito</a>
+                </div>
+            </div>
+
+            <div class="ofert-1">
+                <img src="./Images/huevos4.png" alt="Huevos Samia">
+                <div class="product-txt">
+                    <h3>Huevos Samia ricini</h3>
+                    <p>Huevos de Samia ricini, ideal para quienes quieren explorar especies exóticas.</p>
+                    <p class="precio">€6</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="4">Agregar al carrito</a>
+                </div>
+            </div>
+
+        </div>
+
+        <h2>Gusanos Vivos</h2>
+        <div class="product-content">
+
+            <div class="ofert-1">
+                <img src="./Images/gusano2.png" alt="Gusano RN12">
+                <div class="product-txt">
+                    <h3>Gusanos RN12</h3>
+                    <p>Raza naranja Bombyx mori, ideales para observación y educación.</p>
+                    <p class="precio">€4</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="5">Agregar al carrito</a>
+                </div>
+            </div>
+
+            <div class="ofert-1">
+                <img src="./Images/gusano1.png" alt="Derrobis">
+                <div class="product-txt">
+                    <h3>Gusanos Derrobis</h3>
+                    <p>Fáciles de cuidar. Muy activos y con crecimiento rápido.</p>
+                    <p class="precio">€4</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="6">Agregar al carrito</a>
+                </div>
+            </div>
+
+            <div class="ofert-1">
+                <img src="./Images/gusano-samia.png" alt="Samia Cynthia">
+                <div class="product-txt">
+                    <h3>Samia Cynthia</h3>
+                    <p>Requieren hojas de alianto o ricino. Muy decorativos en forma de capullo.</p>
+                    <p class="precio">€5</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="7">Agregar al carrito</a>
+                </div>
+            </div>
+
+        </div>
+
+        <h2>Capullos y Material Educativo</h2>
+        <div class="product-content">
+
+            <div class="ofert-1">
+                <img src="./Images/capullos.jpg" alt="Capullos vacíos de seda" class="img-capullos">
+                <div class="product-txt">
+                    <h3>Capullos Vacíos</h3>
+                    <p>Capullos reales para usar en clases, manualidades o estudios.</p>
+                    <p class="precio">€7</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="8">Agregar al carrito</a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer container">
+        <div class="link">
+            <h3>Enlaces</h3>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="cuidados.html">Cuidados</a></li>
+                <li><a href="historia.html">Historia</a></li>
+            </ul>
+        </div>
+        <div class="link">
+            <h3>Contacto</h3>
+            <ul>
+              
+              <li><a href="https://www.instagram.com/el_cultivo_de_jose?igsh=MXF5aHpzaGJtb2kzNA==" target="_blank">Instagram</a></li>
+              <li><a href="https://www.youtube.com/@elcultivodejose" target="_blank">YouTube</a></li>
+            </ul>
+          </div>
+    </footer>
+
+    <!-- Script del carrito -->
+    <script src="script.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AfcUuIujwfZsDxmzuJBlbiTICKBQZFwLfQ48kE1KaxII4aCgNs_CqwiUUTFGVzl-YZfVNW9mRpMSc4GF&currency=EUR"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const carrito = document.querySelector('.carrito-flotante');
+        
+            if (!carrito) return; // Si no existe el carrito, no hace nada
+        
+            window.addEventListener('scroll', function () {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+                if (currentScroll > lastScrollTop + 10) {
+                    carrito.classList.add('carrito-oculto');
+                } else if (currentScroll < lastScrollTop - 10) {
+                    carrito.classList.remove('carrito-oculto');
+                }
+        
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            });
+        });
+        </script>
+        
+
+</body>
+</html>
