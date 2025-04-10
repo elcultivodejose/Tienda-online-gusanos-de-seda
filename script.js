@@ -148,3 +148,13 @@ botonFinalizarCompra.addEventListener('click', () => {
         }
     }).render('#paypal-button-container');
 });
+
+function agregarAlCarrito(producto) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.push(producto);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito();
+  }
+  
+
+  
