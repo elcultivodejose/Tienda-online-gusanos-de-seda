@@ -156,5 +156,112 @@ function agregarAlCarrito(producto) {
     mostrarCarrito();
   }
   
+  document.addEventListener('DOMContentLoaded', () => {
+    const carrito = document.querySelector('#carrito tbody');
+    const listaProductos = document.querySelector('.product-content');
+    
+    listaProductos.addEventListener('click', agregarProducto);
 
-  
+    function agregarProducto(e) {
+        e.preventDefault();
+        if (e.target.classList.contains('agregar-carrito')) {
+            const producto = e.target.parentElement.parentElement;
+            leerDatosProducto(producto);
+        }
+    }
+
+    function leerDatosProducto(producto) {
+        const infoProducto = {
+            imagen: producto.querySelector('img').src,
+            titulo: producto.querySelector('h3').textContent,
+            precio: producto.querySelector('.precio').textContent,
+            id: producto.querySelector('a').getAttribute('data-id')
+        };
+
+        insertarCarrito(infoProducto);
+    }
+
+    function insertarCarrito(producto) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><img src="${producto.imagen}" width="50"></td>
+            <td>${producto.titulo}</td>
+            <td>${producto.precio}</td>
+            <td><a href="#" class="borrar-producto" data-id="${producto.id}">X</a></td>
+        `;
+        carrito.appendChild(row);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carrito = [];
+    const carritoTabla = document.querySelector('#lista-carrito tbody');
+    const botonCompra = document.querySelector('#boton-compra');
+    const resumenTotal = document.querySelector('#resumen-total');
+
+    // Escuchar clicks en agregar al carrito
+    document.body.addEventListener('click', e => {
+        if (e.target.classList.contains('agregar-carrito')) {
+            e.preventDefault();
+            const producto = e.target.closest('.ofert-1');
+            const nuevoProducto = {
+                id: e.target.dataset.id,
+                nombre: producto.querySelector('h3').textContent,
+                precio: parseFloat(producto.querySelector('.precio').textContent.replace('€', '')),
+                imagen: producto.querySelector('img').src
+            };
+            carrito.push(nuevoProducto);
+            actualizarCarrito();
+        }
+    });
+
+    function actualizarCarrito() {
+        carritoTabla.innerHTML = '';
+        let total = 0;
+
+        carrito.forEach(prod => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><img src="${prod.imagen}" width="50"></td>
+                <td>${prod.nombre}</td>
+                <td>€${prod.precio.toFixed(2)}</td>
+                <td><a href="#" class="borrar-producto" data-id="${prod.id}">X</a></td>
+            `;
+            carritoTabla.appendChild(row);
+            total += prod.precio;
+        });
+
+        resumenTotal.textContent = `Total: €${total.toFixed(2)}`;
+
+        if (carrito.length > 0) {
+            botonCompra.style.display = 'block';
+        } else {
+            botonCompra.style.display = 'none';
+        }
+    }
+
+    // Mostrar PayPal al hacer clic en finalizar compra
+    botonCompra.addEventListener('click', () => {
+        document.querySelector('#paypal-button-container').innerHTML = '';
+
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: carrito.reduce((acc, prod) => acc + prod.precio, 0).toFixed(2)
+                        }
+                    }]
+                });
+            },
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    alert('Compra completada por ' + details.payer.name.given_name);
+                    carrito.length = 0;
+                    actualizarCarrito();
+                    document.querySelector('#paypal-button-container').innerHTML = '';
+                });
+            }
+        }).render('#paypal-button-container');
+    });
+});
