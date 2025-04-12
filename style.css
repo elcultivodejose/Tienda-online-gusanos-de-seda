@@ -512,6 +512,45 @@ main img:hover {
 .lista-etapas li {
   margin-bottom: 15px;
   display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.lista-etapas li span {
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+.texto-ampliado {
+  font-size: 1.2em;
+  line-height: 1.8;
+}
+
+.dato-curioso {
+  background-color: #fff8dc;
+  border-left: 5px solid #f39c12;
+  padding: 15px 20px;
+  margin: 30px auto;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 700px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .header-img {
   text-align: center;
@@ -523,3 +562,4 @@ main img:hover {
   height: auto;
   display: inline-block;
 }
+
