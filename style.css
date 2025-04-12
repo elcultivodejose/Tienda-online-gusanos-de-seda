@@ -512,6 +512,35 @@ main img:hover {
 .lista-etapas li {
   margin-bottom: 15px;
   display: flex;
+
+    .navbar a {
+  position: relative;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: color 0.3s ease;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #4CAF50; /* color del subrayado */
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.activo::after {
+  width: 100%;
+}
+
+.navbar a:hover,
+.navbar a.activo {
+  color: #4CAF50; /* color del texto activo */
+}
   align-items: flex-start;
   gap: 10px;
 }
