@@ -6,6 +6,7 @@
   <title>Historia - Tus Gusanos de Seda</title>
   <link rel="icon" href="./Images/favicon.png" type="image/png">
   <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -85,6 +86,7 @@
         <div class="frase-final fade-in">✨ La historia del gusano de seda es también la historia de la humanidad tejiendo conexiones. 🧵</div>
       
         <a href="#" class="btn-top">↑</a>
+        
       </main>
       
 
@@ -110,24 +112,24 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const faders = document.querySelectorAll('.fade-in');
-          
-          const appearOnScroll = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-              }
-            });
-          }, {
-            threshold: 0.2
+      document.addEventListener('DOMContentLoaded', () => {
+        const faders = document.querySelectorAll('.fade-in');
+        
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
           });
-      
-          faders.forEach(el => appearOnScroll.observe(el));
+        }, {
+          threshold: 0.2
         });
-      </script>
-
+    
+        faders.forEach(el => appearOnScroll.observe(el));
+      });
+    </script>
+    
 </body>
 </html>
 
