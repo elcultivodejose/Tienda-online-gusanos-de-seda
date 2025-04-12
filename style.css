@@ -512,3 +512,14 @@ main img:hover {
 .lista-etapas li {
   margin-bottom: 15px;
   display: flex;
+
+.header-img {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.header-img img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
