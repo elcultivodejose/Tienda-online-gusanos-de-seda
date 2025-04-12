@@ -551,3 +551,14 @@ main img:hover {
     transform: translateY(0);
   }
 }
+
+.header-img {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.header-img img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
