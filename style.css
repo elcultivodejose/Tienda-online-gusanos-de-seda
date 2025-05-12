@@ -562,3 +562,32 @@ main img:hover {
   height: auto;
   display: inline-block;
 }
+
+.aviso-tienda {
+  background-color: #ffcc00;
+  color: #000;
+  text-align: center;
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: sans-serif;
+  line-height: 1.4;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transform: translateY(-100%);
+  opacity: 0;
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .aviso-tienda {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
